@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option go_package = "/api";
+
+package template;
+
+service TemplateService{
+  rpc Create(UserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+  uint32  name         = 1;
+  uint32  region_id    = 2;
+  string  role         = 3;
+  string  Username     = 4;
+  string  Password     = 5;
+  string  FullName     = 6;
+  string  Phone        = 7;
+  string  Email        = 8;
+  string  Description  = 9;
+  int32   State        = 10;
+  string  AuthKey      = 11;
+  string  AccessToken  = 12;
+  string  RefreshToken = 13;
+  string  LastVisit    = 14;
+  string  CreatedAt    = 15;
+  string  UpdatedAt    = 16;
+  string  DeletedAt    = 17;
+}
+
+message UserResponse {
+  uint32  id            = 1;
+  uint32  name          = 2;
+  uint32  region_id     = 3;
+  string  role          = 4;
+  string  username      = 5;
+  string  password      = 6;
+  string  full_name     = 7;
+  string  phone         = 8;
+  string  email         = 9;
+  string  description   = 10;
+  int32   state         = 11;
+  string  auth_key      = 12;
+  string  access_token  = 13;
+  string  refresh_token = 14;
+  string  last_visit    = 15;
+  string  created_at    = 16;
+  string  updated_at    = 17;
+  string  deleted_at    = 18;
+}
+
