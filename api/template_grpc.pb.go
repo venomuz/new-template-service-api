@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TemplateServiceClient interface {
-	Create(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	Create(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*Users, error)
 }
 
 type templateServiceClient struct {
@@ -33,8 +33,8 @@ func NewTemplateServiceClient(cc grpc.ClientConnInterface) TemplateServiceClient
 	return &templateServiceClient{cc}
 }
 
-func (c *templateServiceClient) Create(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
-	out := new(UserResponse)
+func (c *templateServiceClient) Create(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*Users, error) {
+	out := new(Users)
 	err := c.cc.Invoke(ctx, "/template.TemplateService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ func (c *templateServiceClient) Create(ctx context.Context, in *UserRequest, opt
 // All implementations must embed UnimplementedTemplateServiceServer
 // for forward compatibility
 type TemplateServiceServer interface {
-	Create(context.Context, *UserRequest) (*UserResponse, error)
+	Create(context.Context, *UserRequest) (*Users, error)
 	mustEmbedUnimplementedTemplateServiceServer()
 }
 
@@ -54,7 +54,7 @@ type TemplateServiceServer interface {
 type UnimplementedTemplateServiceServer struct {
 }
 
-func (UnimplementedTemplateServiceServer) Create(context.Context, *UserRequest) (*UserResponse, error) {
+func (UnimplementedTemplateServiceServer) Create(context.Context, *UserRequest) (*Users, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
 func (UnimplementedTemplateServiceServer) mustEmbedUnimplementedTemplateServiceServer() {}

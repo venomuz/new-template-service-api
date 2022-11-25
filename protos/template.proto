@@ -5,7 +5,7 @@ option go_package = "/api";
 package template;
 
 service TemplateService{
-  rpc Create(UserRequest) returns (UserResponse);
+  rpc Create(UserRequest) returns (Users);
 }
 
 message UserRequest {
@@ -28,7 +28,7 @@ message UserRequest {
   string  DeletedAt    = 17;
 }
 
-message UserResponse {
+message Users {
   uint32  id            = 1;
   uint32  name          = 2;
   uint32  region_id     = 3;
