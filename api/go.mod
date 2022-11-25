@@ -1,4 +1,4 @@
-module github.com/venomuz/new-template-service-api/api
+module github.com/venomuz/new-template-service-api
 
 go 1.18
 
